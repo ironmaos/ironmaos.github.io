@@ -3,28 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronMaos</title>
+    <title>IRONMAOS 资源下载</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #ffffff;
-            font-family: 'Arial Black', 'Impact', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            font-size: 12vw;
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        .main-title {
+            font-size: 5rem;
             font-weight: 900;
-            color: #222;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            user-select: none;
+            letter-spacing: 8px;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #f0883e, #f6a85b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(240, 136, 62, 0.3);
+        }
+        .download-section {
+            background: #161b22;
+            border-radius: 16px;
+            padding: 35px 30px;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+        }
+        .download-section h2 {
+            font-size: 1.2rem;
+            color: #8b949e;
+            font-weight: 400;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 12px;
+        }
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #0d1117;
+            padding: 16px 22px;
+            border-radius: 10px;
+            border: 1px solid #21262d;
+            transition: all 0.25s ease;
+        }
+        .file-item:hover {
+            background: #161b22;
+            border-color: #f0883e;
+            transform: translateX(6px);
+            box-shadow: 0 0 15px rgba(240, 136, 62, 0.15);
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            overflow: hidden;
+        }
+        .file-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .file-name {
+            font-size: 1.05rem;
+            color: #e6edf3;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-size {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        .download-btn {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .download-btn:hover {
+            background: #2ea043;
+        }
+        .footer {
+            margin-top: 40px;
+            color: #8b949e;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
-    <h1>IronMaos</h1>
+    <div class="container">
+
+        <!-- ====== 顶部大标题 ====== -->
+        <div class="main-title">IRONMAOS</div>
+
+        <!-- ====== 下载区域 ====== -->
+        <div class="download-section">
+            <h2>📦 资源下载</h2>
+            <div class="file-list">
+
+                <!-- 压缩包 1：photon-main.zip -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="file-icon">📁</span>
+                        <span class="file-name">photon-main.zip</span>
+                        <span class="file-size">(未知大小)</span>
+                    </div>
+                    <a href="./photon-main.zip" class="download-btn" download>⬇ 下载</a>
+                </div>
+
+                <!-- 压缩包 2：PCL-2.12.8.2.zip（已更新） -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="file-icon">📁</span>
+                        <span class="file-name">PCL-2.12.8.2.zip</span>
+                        <span class="file-size">(未知大小)</span>
+                    </div>
+                    <a href="./PCL-2.12.8.2.zip" class="download-btn" download>⬇ 下载</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>IRONMAOS · 资源分享站</p>
+        </div>
+
+    </div>
 </body>
 </html>
