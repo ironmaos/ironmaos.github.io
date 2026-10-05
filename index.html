@@ -5,35 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IRONMAOS 资源下载</title>
     <style>
-        /* ====== 苹果设计系统变量 ====== */
+        /* ====== 哲风壁纸风格暗黑主题变量 ====== */
         :root {
-            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --card-border: rgba(255, 255, 255, 0.8);
-            --text-main: #1d1d1f;
-            --text-sub: #86868b;
-            --item-bg: rgba(255, 255, 255, 0.5);
-            --item-hover: rgba(255, 255, 255, 0.9);
-            --btn-bg: #007aff;
-            --btn-hover: #0071e3;
-            --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 16px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-gradient: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-                --card-bg: rgba(30, 30, 30, 0.65);
-                --card-border: rgba(255, 255, 255, 0.1);
-                --text-main: #f5f5f7;
-                --text-sub: #a1a1a6;
-                --item-bg: rgba(255, 255, 255, 0.05);
-                --item-hover: rgba(255, 255, 255, 0.12);
-                --btn-bg: #0a84ff;
-                --btn-hover: #409cff;
-                --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-                --shadow-hover: 0 16px 50px rgba(0, 0, 0, 0.7);
-            }
+            --bg-color: #121212;
+            --card-bg: #1c1c1c;
+            --card-border: #2a2a2a;
+            --text-main: #f5f5f5;
+            --text-sub: #888888;
+            --item-bg: #242424;
+            --item-hover: #2e2e2e;
+            --btn-bg: #ffffff;
+            --btn-text: #121212;
+            --btn-hover: #e0e0e0;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -48,8 +32,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
+            background: var(--bg-color);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -57,7 +40,6 @@
             align-items: center;
             justify-content: center;
             padding: 30px 16px;
-            transition: background 0.5s ease, color 0.5s ease;
         }
 
         .container {
@@ -78,22 +60,15 @@
             letter-spacing: -2px;
             margin-bottom: 40px;
             color: var(--text-main);
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
         }
 
         .download-section {
             background: var(--card-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 28px;
+            border-radius: 24px;
             padding: 30px;
             border: 1px solid var(--card-border);
             box-shadow: var(--shadow);
-            transition: box-shadow 0.4s ease, background 0.4s ease;
-        }
-
-        .download-section:hover {
-            box-shadow: var(--shadow-hover);
         }
 
         .download-section h2 {
@@ -102,6 +77,10 @@
             font-weight: 500;
             margin-bottom: 24px;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .file-list {
@@ -115,15 +94,16 @@
             align-items: center;
             justify-content: space-between;
             background: var(--item-bg);
-            padding: 14px 20px;
+            padding: 16px 20px;
             border-radius: 16px;
+            border: 1px solid transparent;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .file-item:hover {
             background: var(--item-hover);
-            transform: scale(1.015) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border-color: #333333;
+            transform: translateY(-2px);
         }
 
         .file-info {
@@ -134,15 +114,25 @@
         }
 
         .file-icon {
-            font-size: 1.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
-            background: rgba(120, 120, 128, 0.12);
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            background: #111111;
+            border-radius: 50%;
             flex-shrink: 0;
+            color: white;
+        }
+
+        .file-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .file-name {
@@ -152,6 +142,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: left;
         }
 
         .file-size {
@@ -163,9 +154,9 @@
 
         .download-btn {
             background: var(--btn-bg);
-            color: white;
+            color: var(--btn-text);
             border: none;
-            padding: 8px 22px;
+            padding: 8px 24px;
             border-radius: 99px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -194,12 +185,10 @@
             color: var(--text-sub);
             font-size: 0.8rem;
             letter-spacing: 1px;
-            opacity: 0.8;
+            opacity: 0.6;
         }
 
-        /* =======================================================
-           手机端专属响应式布局
-           ======================================================= */
+        /* 手机端专属响应式布局 */
         @media screen and (max-width: 600px) {
             body {
                 padding: 20px 12px;
@@ -211,7 +200,7 @@
             }
             .download-section {
                 padding: 20px 16px;
-                border-radius: 22px;
+                border-radius: 20px;
             }
             .download-section h2 {
                 margin-bottom: 16px;
@@ -237,7 +226,6 @@
             }
             .file-item:hover {
                 transform: none;
-                box-shadow: none;
             }
         }
     </style>
@@ -253,40 +241,48 @@
             <h2>资源下载</h2>
             <div class="file-list">
 
-                <!-- 压缩包 1 -->
+                <!-- 压缩包 1：photon-main.zip -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4C4 2.89543 4.89543 2 6 2H14L20 8V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V4Z"/><path d="M14 2V8H20"/><path d="M12 7V17"/><path d="M10 8H12M14 9H12M10 10H12M14 11H12M10 12H12M14 13H12M10 14H12M14 15H12"/><rect x="11" y="16" width="2" height="4" rx="1"/></svg>
+                        </span>
                         <span class="file-name">photon-main.zip</span>
                         <span class="file-size">(1.44MB)</span>
                     </div>
                     <a href="./photon-main.zip" class="download-btn" download>下载</a>
                 </div>
 
-                <!-- 压缩包 2 -->
+                <!-- 压缩包 2：PCL-2.12.8.2.zip -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4C4 2.89543 4.89543 2 6 2H14L20 8V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V4Z"/><path d="M14 2V8H20"/><path d="M12 7V17"/><path d="M10 8H12M14 9H12M10 10H12M14 11H12M10 12H12M14 13H12M10 14H12M14 15H12"/><rect x="11" y="16" width="2" height="4" rx="1"/></svg>
+                        </span>
                         <span class="file-name">PCL-2.12.8.2.zip</span>
                         <span class="file-size">(2.35MB)</span>
                     </div>
                     <a href="./PCL-2.12.8.2.zip" class="download-btn" download>下载</a>
                 </div>
 
-                <!-- 压缩包 3 -->
+                <!-- 压缩包 3：Derivative Main d24.4.14.zip -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4C4 2.89543 4.89543 2 6 2H14L20 8V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V4Z"/><path d="M14 2V8H20"/><path d="M12 7V17"/><path d="M10 8H12M14 9H12M10 10H12M14 11H12M10 12H12M14 13H12M10 14H12M14 15H12"/><rect x="11" y="16" width="2" height="4" rx="1"/></svg>
+                        </span>
                         <span class="file-name">Derivative Main d24.4.14.zip</span>
                         <span class="file-size">(18.8MB)</span>
                     </div>
                     <a href="./Derivative%20Main%20d24.4.14.zip" class="download-btn" download>下载</a>
                 </div>
 
-                <!-- 压缩包 4：Needs of Nature.zip（新增） -->
+                <!-- 压缩包 4：Needs of Nature.zip -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4C4 2.89543 4.89543 2 6 2H14L20 8V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V4Z"/><path d="M14 2V8H20"/><path d="M12 7V17"/><path d="M10 8H12M14 9H12M10 10H12M14 11H12M10 12H12M14 13H12M10 14H12M14 15H12"/><rect x="11" y="16" width="2" height="4" rx="1"/></svg>
+                        </span>
                         <span class="file-name">Needs of Nature.zip</span>
                         <span class="file-size">(8.52MB)</span>
                     </div>
