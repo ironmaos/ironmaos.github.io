@@ -180,12 +180,28 @@
             transform: scale(0.96);
         }
 
+        /* ====== 修改了底部的样式 ====== */
         .footer {
             margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
             color: var(--text-sub);
             font-size: 0.8rem;
             letter-spacing: 1px;
-            opacity: 0.6;
+            opacity: 0.8;
+        }
+
+        .sponsor-text {
+            font-size: 0.85rem;
+            color: #a1a1a6;
+        }
+
+        /* 给赞助者名字一个高级的淡金色 */
+        .sponsor-name {
+            color: #e5c07b;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         /* 手机端专属响应式布局 */
@@ -292,8 +308,10 @@
             </div>
         </div>
 
+        <!-- ====== 底部区域（已更新） ====== -->
         <div class="footer">
             <p>IRONMAOS · 资源分享站</p>
+            <p class="sponsor-text">Bilibili账号 <span class="sponsor-name">MC_白埔博士</span> 赞助💵</p>
         </div>
 
     </div>
