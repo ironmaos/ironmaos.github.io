@@ -2,123 +2,243 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IRONMAOS 资源下载</title>
     <style>
+        /* ====== 苹果设计系统变量 ====== */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --item-bg: rgba(255, 255, 255, 0.5);
+            --item-hover: rgba(255, 255, 255, 0.9);
+            --btn-bg: #007aff;
+            --btn-hover: #0071e3;
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 16px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+                --card-bg: rgba(30, 30, 30, 0.65);
+                --card-border: rgba(255, 255, 255, 0.1);
+                --text-main: #f5f5f7;
+                --text-sub: #a1a1a6;
+                --item-bg: rgba(255, 255, 255, 0.05);
+                --item-hover: rgba(255, 255, 255, 0.12);
+                --btn-bg: #0a84ff;
+                --btn-hover: #409cff;
+                --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+                --shadow-hover: 0 16px 50px rgba(0, 0, 0, 0.7);
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
+
         body {
-            font-family: 'Segoe UI', 'PingFang SC', Roboto, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 30px 16px;
+            transition: background 0.5s ease, color 0.5s ease;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 760px;
             width: 100%;
             text-align: center;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         .main-title {
-            font-size: 5rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #f0883e, #f6a85b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px rgba(240, 136, 62, 0.3);
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+            color: var(--text-main);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
+
         .download-section {
-            background: #161b22;
-            border-radius: 16px;
-            padding: 35px 30px;
-            border: 1px solid #30363d;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            background: var(--card-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.4s ease, background 0.4s ease;
         }
+
+        .download-section:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
         .download-section h2 {
-            font-size: 1.2rem;
-            color: #8b949e;
-            font-weight: 400;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            border-bottom: 1px solid #21262d;
-            padding-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
         }
+
         .file-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
+
         .file-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #0d1117;
-            padding: 16px 22px;
-            border-radius: 10px;
-            border: 1px solid #21262d;
-            transition: all 0.25s ease;
+            background: var(--item-bg);
+            padding: 14px 20px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .file-item:hover {
-            background: #161b22;
-            border-color: #f0883e;
-            transform: translateX(6px);
-            box-shadow: 0 0 15px rgba(240, 136, 62, 0.15);
+            background: var(--item-hover);
+            transform: scale(1.015) translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
         }
+
         .file-info {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
             overflow: hidden;
         }
+
         .file-icon {
-            font-size: 1.6rem;
-            line-height: 1;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(120, 120, 128, 0.12);
+            border-radius: 10px;
             flex-shrink: 0;
         }
+
         .file-name {
-            font-size: 1.05rem;
-            color: #e6edf3;
+            font-size: 1rem;
+            color: var(--text-main);
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .file-size {
             font-size: 0.85rem;
-            color: #8b949e;
-            margin-left: 8px;
+            color: var(--text-sub);
+            margin-left: 10px;
             flex-shrink: 0;
         }
+
         .download-btn {
-            background: #238636;
+            background: var(--btn-bg);
             color: white;
             border: none;
-            padding: 7px 20px;
-            border-radius: 8px;
+            padding: 8px 22px;
+            border-radius: 99px;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
             white-space: nowrap;
             flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
+
         .download-btn:hover {
-            background: #2ea043;
+            background: var(--btn-hover);
+            transform: scale(1.04);
         }
+
+        .download-btn:active {
+            transform: scale(0.96);
+        }
+
         .footer {
-            margin-top: 40px;
-            color: #8b949e;
-            font-size: 0.85rem;
+            margin-top: 35px;
+            color: var(--text-sub);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* =======================================================
+           手机端专属响应式布局
+           ======================================================= */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+            .main-title {
+                font-size: 2.8rem;
+                letter-spacing: -1px;
+                margin-bottom: 25px;
+            }
+            .download-section {
+                padding: 20px 16px;
+                border-radius: 22px;
+            }
+            .download-section h2 {
+                margin-bottom: 16px;
+            }
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px;
+                gap: 14px;
+            }
+            .file-info {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .file-name {
+                flex: 1;
+            }
+            .download-btn {
+                width: 100%;
+                padding: 12px 0;
+                font-size: 1rem;
+                border-radius: 12px;
+            }
+            .file-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
         }
     </style>
 </head>
@@ -130,37 +250,49 @@
 
         <!-- ====== 下载区域 ====== -->
         <div class="download-section">
-            <h2>📦 资源下载</h2>
+            <h2>资源下载</h2>
             <div class="file-list">
 
-                <!-- 压缩包 1：photon-main.zip -->
+                <!-- 压缩包 1 -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">📦</span>
                         <span class="file-name">photon-main.zip</span>
                         <span class="file-size">(1.44MB)</span>
                     </div>
-                    <a href="./photon-main.zip" class="download-btn" download>⬇ 下载</a>
+                    <a href="./photon-main.zip" class="download-btn" download>下载</a>
                 </div>
 
-                <!-- 压缩包 2：PCL-2.12.8.2.zip（已更新） -->
+                <!-- 压缩包 2 -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">📦</span>
                         <span class="file-name">PCL-2.12.8.2.zip</span>
                         <span class="file-size">(2.35MB)</span>
                     </div>
-                    <a href="./PCL-2.12.8.2.zip" class="download-btn" download>⬇ 下载</a>
+                    <a href="./PCL-2.12.8.2.zip" class="download-btn" download>下载</a>
                 </div>
-                <!-- 压缩包 3：Derivative Main d24.4.14.zip -->
+
+                <!-- 压缩包 3 -->
                 <div class="file-item">
                     <div class="file-info">
-                        <span class="file-icon">📁</span>
+                        <span class="file-icon">📦</span>
                         <span class="file-name">Derivative Main d24.4.14.zip</span>
                         <span class="file-size">(18.8MB)</span>
                     </div>
-                    <a href="./Derivative%20Main%20d24.4.14.zip" class="download-btn" download>⬇ 下载</a>
+                    <a href="./Derivative%20Main%20d24.4.14.zip" class="download-btn" download>下载</a>
                 </div>
+
+                <!-- 压缩包 4：Needs of Nature.zip（新增） -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="file-icon">📦</span>
+                        <span class="file-name">Needs of Nature.zip</span>
+                        <span class="file-size">(8.52MB)</span>
+                    </div>
+                    <a href="./Needs%20of%20Nature.zip" class="download-btn" download>下载</a>
+                </div>
+
             </div>
         </div>
 
